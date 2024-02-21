@@ -23,14 +23,27 @@
  SOFTWARE.
 
  */
-import { ExtensionProvider40 } from '@looker/extension-sdk-react'
 import React from 'react'
-import { AppTab } from './AppTab'
-import Header from './Header/Header'
 
-export const App = () => (
-  <ExtensionProvider40>
-    <Header />
-    <AppTab />
-  </ExtensionProvider40>
-)
+import { ComponentsProvider, Tab2, Tabs2 } from '@looker/components'
+import { CreateTemplateUpload } from './CreateTemplate/CreateTemplateUpload'
+import { DownLoadTemplate } from './DownloadTemplate/DownLoadTemplate'
+
+export const AppTab: React.FC = () => {
+  return (
+    <ComponentsProvider
+      themeCustomizations={{
+        colors: { key: '#1A73E8' },
+      }}
+    >
+      <Tabs2 defaultTabId="createtemplate">
+        <Tab2 id="createtemplate" label="Create Template Upload">
+          <CreateTemplateUpload />
+        </Tab2>
+        <Tab2 id="downloadtemplate" label="Download Template Upload">
+          <DownLoadTemplate />
+        </Tab2>
+      </Tabs2>
+    </ComponentsProvider>
+  )
+}
