@@ -111,7 +111,7 @@ export const CreateTemplateUpload: React.FC = () => {
           <Heading marginBottom={'10px'}>Upload Template</Heading>
           <Space gap={'small'} marginTop={'10px'} marginBottom={'20px'}>
             <FileUploadInput
-              buttonText="Chose Template"
+              buttonText="Choose Template"
               handleFile={function (value: File): void {
                 setFile(value)
                 setFileName(value.name)

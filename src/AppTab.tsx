@@ -37,7 +37,7 @@ export const AppTab: React.FC = () => {
       }}
     >
       <Tabs2 defaultTabId="createtemplate">
-        <Tab2 id="createtemplate" label="Create Template Upload">
+        <Tab2 id="createtemplate" label="Upload Template">
           <CreateTemplateUpload />
         </Tab2>
         <Tab2 id="downloadtemplate" label="Download Template Upload">
