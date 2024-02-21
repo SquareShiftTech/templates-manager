@@ -123,7 +123,6 @@ export const CreateTemplateUpload: React.FC = () => {
           </Space>
         </CardContent>
       )}
-      <Toaster richColors />
     </ComponentsProvider>
   )
 }

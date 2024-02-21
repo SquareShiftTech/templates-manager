@@ -5,6 +5,9 @@ application: templates-manager {
   url: "https://localhost:8080/bundle.js"
   # file: "bundle.js
   entitlements: {
-  core_api_methods: ["me"]
+    external_api_urls: ["https://pixelperfect.squareshift.dev"]
+    core_api_methods: ["me"]
+    use_iframes: yes
+    use_downloads: yes
 }
 }

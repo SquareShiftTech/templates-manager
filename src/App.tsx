@@ -25,6 +25,7 @@
  */
 import { ExtensionProvider40 } from '@looker/extension-sdk-react'
 import React from 'react'
+import { Toaster } from 'sonner'
 import { AppTab } from './AppTab'
 import Header from './Header/Header'
 
@@ -32,5 +33,6 @@ export const App = () => (
   <ExtensionProvider40>
     <Header />
     <AppTab />
+    <Toaster richColors />
   </ExtensionProvider40>
 )

@@ -23,10 +23,46 @@
  SOFTWARE.
 
  */
-import { CardContent, ComponentsProvider, Heading } from '@looker/components'
-import React from 'react'
+import {
+  CardContent,
+  ComponentsProvider,
+  Heading,
+  FieldSelect,
+  Button,
+} from '@looker/components'
+import React, { useEffect, useState } from 'react'
+import fileDownload from 'js-file-download'
+import { toast } from 'sonner'
+import { getTemplates } from '../api/api'
 
 export const DownLoadTemplate: React.FC = () => {
+  const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [existingTemplates, setExistingTemplates] = useState<string[]>([''])
+  const [selectedTemplate, setSelectedTemplate] = useState<string>()
+
+  useEffect(() => {
+    getTemplates().then((response) => {
+      setExistingTemplates(response)
+      setIsLoading(false)
+    })
+  }, [])
+
+  const templateChangeHandler = (value: string) => {
+    setSelectedTemplate(value)
+  }
+
+  const downloadButtonHandler = (e: any) => {
+    e.preventDefault()
+    // fetch the file url for selectedtemplate
+    const fileUrl =
+      'https://support.staffbase.com/hc/en-us/article_attachments/360009197011/username-password-recovery-code.csv'
+    fileDownload(fileUrl, selectedTemplate || 'downloaded_file.csv')
+    toast.success('File Downloaded Sucessfully', {
+      position: 'top-center',
+      duration: 1000,
+    })
+  }
+
   return (
     <ComponentsProvider
       themeCustomizations={{
@@ -35,6 +71,24 @@ export const DownLoadTemplate: React.FC = () => {
     >
       <CardContent maxWidth={'50%'}>
         <Heading marginBottom={'10px'}>Download Template</Heading>
+        <FieldSelect
+          name="templates"
+          label="Templates"
+          defaultValue={existingTemplates[0]}
+          options={existingTemplates.map((templateName) => ({
+            label: templateName,
+            value: templateName,
+          }))}
+          onChange={templateChangeHandler}
+          marginBottom={'10px'}
+          placeholder="Please select a template"
+        />
+        <Button
+          onClick={downloadButtonHandler}
+          disabled={isLoading || !selectedTemplate}
+        >
+          Download Template
+        </Button>
       </CardContent>
     </ComponentsProvider>
   )
