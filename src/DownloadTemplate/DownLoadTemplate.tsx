@@ -23,12 +23,19 @@
  SOFTWARE.
 
  */
-import { ExtensionProvider40 } from '@looker/extension-sdk-react'
+import { CardContent, ComponentsProvider, Heading } from '@looker/components'
 import React from 'react'
-import { AppTab } from './AppTab'
 
-export const App = () => (
-  <ExtensionProvider40>
-    <AppTab />
-  </ExtensionProvider40>
-)
+export const DownLoadTemplate: React.FC = () => {
+  return (
+    <ComponentsProvider
+      themeCustomizations={{
+        colors: { key: '#1A73E8' },
+      }}
+    >
+      <CardContent maxWidth={'50%'}>
+        <Heading marginBottom={'10px'}>Download Template</Heading>
+      </CardContent>
+    </ComponentsProvider>
+  )
+}

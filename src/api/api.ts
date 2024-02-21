@@ -23,12 +23,20 @@
  SOFTWARE.
 
  */
-import { ExtensionProvider40 } from '@looker/extension-sdk-react'
-import React from 'react'
-import { AppTab } from './AppTab'
 
-export const App = () => (
-  <ExtensionProvider40>
-    <AppTab />
-  </ExtensionProvider40>
-)
+const COMMON_URL = 'https://pixelperfect.squareshift.dev'
+export const uploadFile = async (formData: FormData) => {
+  try {
+    const response = await fetch(`${COMMON_URL}/extensions/templates/upload`, {
+      method: 'POST',
+      body: formData,
+    })
+    if (!response.ok) {
+      throw new Error('Network response was not ok')
+    }
+    const data = await response.json()
+    return data
+  } catch (error) {
+    return error
+  }
+}
