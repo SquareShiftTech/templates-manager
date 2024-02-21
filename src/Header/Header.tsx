@@ -47,7 +47,7 @@ const Header = () => {
           />
         </FlexItem>{' '}
         <FlexItem>
-          <h2>Pixel Perfect</h2>
+          <h2>Templates manager</h2>
         </FlexItem>
         <FlexItem>
           <h2 style={{ color: '#4b8468ff' }}> Templates manager</h2>
