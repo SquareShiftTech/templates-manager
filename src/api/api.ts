@@ -40,3 +40,21 @@ export const uploadFile = async (formData: FormData) => {
     return error
   }
 }
+
+export const getTemplates = () => {
+  return fetch(`${COMMON_URL}/extensions/templates/list_all`, {
+    method: 'get',
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok')
+      }
+      return response.json()
+    })
+    .then((data) => {
+      return data
+    })
+    .catch((error) => {
+      return error
+    })
+}

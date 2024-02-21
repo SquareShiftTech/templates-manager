@@ -34,6 +34,7 @@ import {
   Space,
 } from '@looker/components'
 import React, { useState } from 'react'
+import { Toaster, toast } from 'sonner'
 import { uploadFile } from '../api/api'
 
 const FileUploadInput = (props: InputFileProps) => {
@@ -83,6 +84,10 @@ export const CreateTemplateUpload: React.FC = () => {
         .then((response) => {
           // eslint-disable-next-line no-console
           console.log('File Uploaded', response)
+          toast.success('File Uploaded Sucessfully', {
+            position: 'top-center',
+            duration: 1000,
+          })
         })
         .catch((error) => {
           console.error(error)
@@ -118,6 +123,7 @@ export const CreateTemplateUpload: React.FC = () => {
           </Space>
         </CardContent>
       )}
+      <Toaster richColors />
     </ComponentsProvider>
   )
 }
